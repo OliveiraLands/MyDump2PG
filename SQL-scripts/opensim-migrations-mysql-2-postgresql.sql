@@ -54,6 +54,18 @@ alter table inventoryitems alter column "inventoryID"    set default '00000000-0
 alter table inventoryitems alter column "avatarID"       type uuid using cast("avatarID" as uuid);
 alter table inventoryitems alter column "parentFolderID" type uuid using cast("parentFolderID" as uuid);
 
+alter table land alter column "AuthbuyerID"    drop default;
+alter table land alter column "UUID"       type uuid using cast("UUID" as uuid),
+                 alter column "RegionUUID" type uuid using cast("RegionUUID" as uuid),
+                 alter column "OwnerUUID"  type uuid using cast("OwnerUUID"  as uuid),
+                 alter column "GroupUUID"  type uuid using cast("GroupUUID"  as uuid),
+                 alter column "MediaTextureUUID" type uuid using cast("MediaTextureUUID" as uuid),
+                 alter column "SnapshotUUID"     type uuid using cast("SnapshotUUID"     as uuid),
+                 alter column "AuthbuyerID"      type uuid using cast("AuthbuyerID"      as uuid);
+alter table land alter column "AuthbuyerID"    set default '00000000-0000-0000-0000-000000000000'::uuid;
+
+CREATE INDEX land_lower_idx  ON land  USING btree  (lower("Name"::text));
+
 
 rollback;
 

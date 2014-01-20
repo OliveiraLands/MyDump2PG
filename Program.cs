@@ -1,7 +1,4 @@
-MyDump2PG
-=========
-
-/* MIT LICENCE:
+﻿/* MIT LICENCE:
 
 Copyright (C) 2013 - Fernando Francisco de Oliveira
 
@@ -19,6 +16,24 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
 OR OTHER DEALINGS IN THE SOFTWARE.
  
 */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
-MySQL Dump backup to PostgreSQL script syntax
-
+namespace MyDump2PG
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new frmMyDump2PG());
+        }
+    }
+}
